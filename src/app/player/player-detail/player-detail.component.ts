@@ -5,9 +5,9 @@ import {Player} from '../player.model';
 import {PlayerService} from '../player.service';
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css']
+  selector: 'app-player-detail',
+  templateUrl: './player-detail.component.html',
+  styleUrls: ['./player-detail.component.css']
 })
 export class PlayerDetailComponent implements OnInit {
 
@@ -17,9 +17,8 @@ export class PlayerDetailComponent implements OnInit {
   private playerService: PlayerService;
   private router: Router;
 
-  constructor(playerService: PlayerService, player: Player, activatedRoute: ActivatedRoute, router: Router) {
+  constructor(playerService: PlayerService, activatedRoute: ActivatedRoute, router: Router) {
     this.playerService = playerService;
-    this.player = player;
     this.activatedRoute = activatedRoute;
     this.router = router;
   }

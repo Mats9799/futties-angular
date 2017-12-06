@@ -1,42 +1,46 @@
 import {environment} from '../../environments/environment.prod';
-import {Headers} from '@angular/http';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 
 import {Player} from './player.model';
+import {Injectable} from '@angular/core';
+import {FuttiesPlayer} from './futtiesplayer.model';
 
+@Injectable()
 export class PlayerService {
 
   private headers: Headers;
-  private http: Http;
   private players: Player[];
   private serverUrl: string;
 
-  constructor(http: Http) {
+  constructor(private http: Http) {
     this.headers = new Headers({'Content-Type': 'application/json'});
-    this.http = http;
     this.serverUrl = environment.serverUrl + '/players';
 
-    this.fetchPlayers();
+    console.log(this.http);
   }
 
   // Het ophalen van bestaande players uit de database
-  private fetchPlayers(): void {
+  fetchPlayers(): void {
     this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
       .then(players => {
         console.log(players.json());
-        this.players = players.json() as Player[];
+        this.players = players.json() as FuttiesPlayer[];
       })
       .catch(error => {
         console.log(error.message);
       });
   }
 
-  getPlayerByIndex(index: number): Player {
+  public getPlayerByIndex(index: number): Player {
     return this.players[index];
   }
 
-  getPlayerByName(name: string): Player {
+  public getPlayerByName(name: string): Player {
     return this.players.find({name: name}[0]);
+  }
+
+  public getPlayers(): Player[] {
+    return this.players;
   }
 }

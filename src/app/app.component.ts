@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  private loadedFeature: string;
+
+  constructor() {
+    this.loadedFeature = 'players';
+  }
+
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
+  }
 }

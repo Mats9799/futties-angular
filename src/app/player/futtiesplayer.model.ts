@@ -20,31 +20,31 @@ export class FuttiesPlayer implements Player {
     this.assists = assists;
   }
 
-  getAge(): number {
+  public getAge(): number {
     return this.age;
   }
 
-  getAssists(): number {
+  public getAssists(): number {
     return this.assists;
   }
 
-  getCountry(): string {
+  public getCountry(): string {
     return this.country;
   }
 
-  getGoals(): number {
+  public getGoals(): number {
     return this.goals;
   }
 
-  getHeight(): number {
+  public getHeight(): number {
     return this.height;
   }
 
-  getName(): string {
+  public getName(): string {
     return this.name;
   }
 
-  getPosition(): string {
+  public getPosition(): string {
     return this.position;
   }
 }
