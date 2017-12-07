@@ -10,6 +10,8 @@ import {PlayerService} from './player/player.service';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpModule} from '@angular/http';
 import { PlayerListComponent } from './player/player-list/player-list.component';
+import {ClubService} from "./club/club.service";
+import {PlayerResolver} from "./player/player-resolver.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { PlayerListComponent } from './player/player-list/player-list.component'
     AppRoutingModule,
     HttpModule
   ],
-  providers: [PlayerService],
+  providers: [ClubService, PlayerResolver, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,15 +18,17 @@ export class PlayerService {
   }
 
   // Het ophalen van bestaande players uit de database
-  fetchPlayers(): void {
+  public getPlayers(): Promise<Player[]> {
     this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
       .then(players => {
         this.players = players.json() as FuttiesPlayer[];
+        return players.json() as FuttiesPlayer[];
       })
       .catch(error => {
         console.log(error.message);
       });
+    return null;
   }
 
   public getPlayerByIndex(index: number): Player {
@@ -35,9 +37,5 @@ export class PlayerService {
 
   public getPlayerByName(name: string): Player {
     return this.players.find({name: name}[0]);
-  }
-
-  public getPlayers(): Player[] {
-    return this.players;
   }
 }

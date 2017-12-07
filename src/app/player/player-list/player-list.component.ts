@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {PlayerService} from '../player.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Player} from "../player.model";
+import {ActivatedRoute, Data} from "@angular/router";
+import {PlayerService} from "../player.service";
 
 @Component({
   selector: 'app-player-list',
@@ -8,13 +10,21 @@ import {PlayerService} from '../player.service';
 })
 export class PlayerListComponent implements OnInit {
 
-  private playerService: PlayerService;
+  @Input() players: Player[];
 
-  constructor(playerService: PlayerService) {
+  private playerService: PlayerService;
+  private route: ActivatedRoute;
+
+  constructor(playerService: PlayerService, route: ActivatedRoute) {
     this.playerService = playerService;
+    this.route = route;
   }
 
   ngOnInit() {
-    // this.playerService.fetchPlayers();
+    this.route.data
+      .subscribe((data: Data) => {
+        this.players = data['players'];
+        console.log(this.players);
+      });
   }
 }
