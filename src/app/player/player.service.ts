@@ -15,8 +15,6 @@ export class PlayerService {
   constructor(private http: Http) {
     this.headers = new Headers({'Content-Type': 'application/json'});
     this.serverUrl = environment.serverUrl + '/players';
-
-    console.log(this.http);
   }
 
   // Het ophalen van bestaande players uit de database
@@ -24,7 +22,6 @@ export class PlayerService {
     this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
       .then(players => {
-        console.log(players.json());
         this.players = players.json() as FuttiesPlayer[];
       })
       .catch(error => {

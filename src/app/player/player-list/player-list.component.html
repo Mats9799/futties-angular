@@ -2,7 +2,6 @@
   <div class="col-xs-12">
     <app-player-detail
       *ngFor="let player of playerService.getPlayers(); let i = index"
-      [player]="player"
-      [id]="i"></app-player-detail>
+      [player]="player"></app-player-detail>
   </div>
 </div>

@@ -15,6 +15,6 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.playerService.fetchPlayers();
+    // this.playerService.fetchPlayers();
   }
 }

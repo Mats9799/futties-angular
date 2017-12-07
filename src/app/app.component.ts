@@ -10,7 +10,7 @@ export class AppComponent {
   private loadedFeature: string;
 
   constructor() {
-    this.loadedFeature = 'players';
+    this.loadedFeature = 'players'; // Standaard route
   }
 
   onNavigate(feature: string) {
