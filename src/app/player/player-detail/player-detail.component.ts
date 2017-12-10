@@ -10,4 +10,8 @@ import {Player} from '../player.model';
 export class PlayerDetailComponent {
 
   @Input() player: Player;
+
+  onSign(): void {
+
+  }
 }

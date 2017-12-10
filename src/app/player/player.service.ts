@@ -23,12 +23,13 @@ export class PlayerService {
       .toPromise()
       .then(players => {
         this.players = players.json() as FuttiesPlayer[];
+        console.log(this.players);
         return players.json() as FuttiesPlayer[];
       })
       .catch(error => {
         console.log(error.message);
+        return new Player[0];
       });
-    return null;
   }
 
   public getPlayerByIndex(index: number): Player {

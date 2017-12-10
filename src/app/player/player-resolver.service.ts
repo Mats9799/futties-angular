@@ -7,11 +7,7 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class PlayerResolver implements Resolve<Player[]> {
 
-  private playerService: PlayerService;
-
-  constructor(playerService: PlayerService) {
-    this.playerService = playerService;
-  }
+  constructor(private playerService: PlayerService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Player[]> | Promise<Player[]> | Player[] {
     return this.playerService.getPlayers();

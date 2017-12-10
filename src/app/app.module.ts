@@ -12,6 +12,7 @@ import {HttpModule} from '@angular/http';
 import { PlayerListComponent } from './player/player-list/player-list.component';
 import {ClubService} from "./club/club.service";
 import {PlayerResolver} from "./player/player-resolver.service";
+import {TeamComponent} from "./team/team.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PlayerResolver} from "./player/player-resolver.service";
     ClubComponent,
     PlayerDetailComponent,
     HeaderComponent,
-    PlayerListComponent
+    PlayerListComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
