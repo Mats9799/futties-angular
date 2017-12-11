@@ -1,5 +1,3 @@
-<!--<h1>{{player.getName()}}</h1>-->
-<!--<p>{{player.getCountry()}}</p>-->
 <div class="player-list">
   <div class="player">
     <div class="player-row">
@@ -15,7 +13,11 @@
     </div>
     <div class="player-image">
       <img [src]="'../../assets/img/players/' + player.name.replace(' ', '_').toLowerCase() + '.png'"/>
-      <button class="btn btn-success" (click)="onSign()">Contracteer</button>
+    </div>
+    <div class="row player-row">
+      <button class="btn btn-success" (click)="onClaim()">Claim</button>
+      <button class="btn btn-primary" (click)="onEdit()">Bewerk</button>
+      <button class="btn btn-danger" (click)="onDelete()">Verwijder</button>
     </div>
   </div>
 </div>

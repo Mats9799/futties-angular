@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 import {Player} from '../player.model';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-player-detail',
@@ -10,6 +11,12 @@ import {Player} from '../player.model';
 export class PlayerDetailComponent {
 
   @Input() player: Player;
+
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
+  onEdit() {
+    this.router.navigate([this.player._id + '/edit'], {relativeTo: this.route});
+  }
 
   onSign(): void {
 

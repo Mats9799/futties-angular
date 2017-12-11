@@ -2,6 +2,7 @@ import {Player} from './player.model';
 
 export class FuttiesPlayer implements Player {
 
+  public _id: string;
   public age: number;
   public assists: number;
   public country: string;

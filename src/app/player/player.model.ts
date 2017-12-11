@@ -1,5 +1,7 @@
 export interface Player {
 
+  _id: string;
+
   age: number;
 
   assists: number;
@@ -13,18 +15,4 @@ export interface Player {
   name: string;
 
   position: string;
-
-  getAge(): number;
-
-  getAssists(): number;
-
-  getCountry(): string;
-
-  getGoals(): number;
-
-  getHeight(): number;
-
-  getName(): string;
-
-  getPosition(): string;
 }

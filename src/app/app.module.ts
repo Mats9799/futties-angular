@@ -16,6 +16,8 @@ import {TeamComponent} from "./team/team.component";
 import { ClubListComponent } from './club/club-list/club-list.component';
 import { ClubDetailComponent } from './club/club-detail/club-detail.component';
 import { ClubPlayersComponent } from './club/club-players/club-players.component';
+import { PlayerEditComponent } from './player/player-edit/player-edit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,12 +30,14 @@ import { ClubPlayersComponent } from './club/club-players/club-players.component
     TeamComponent,
     ClubListComponent,
     ClubDetailComponent,
-    ClubPlayersComponent
+    ClubPlayersComponent,
+    PlayerEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [ClubService, PlayerService],
   bootstrap: [AppComponent]
