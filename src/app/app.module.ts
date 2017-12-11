@@ -13,6 +13,9 @@ import { PlayerListComponent } from './player/player-list/player-list.component'
 import {ClubService} from "./club/club.service";
 import {PlayerResolver} from "./player/player-resolver.service";
 import {TeamComponent} from "./team/team.component";
+import { ClubListComponent } from './club/club-list/club-list.component';
+import { ClubDetailComponent } from './club/club-detail/club-detail.component';
+import { ClubPlayersComponent } from './club/club-players/club-players.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,17 @@ import {TeamComponent} from "./team/team.component";
     PlayerDetailComponent,
     HeaderComponent,
     PlayerListComponent,
-    TeamComponent
+    TeamComponent,
+    ClubListComponent,
+    ClubDetailComponent,
+    ClubPlayersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule
   ],
-  providers: [ClubService, PlayerResolver, PlayerService],
+  providers: [ClubService, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

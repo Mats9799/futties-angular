@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Player} from "../player.model";
 import {ActivatedRoute, Data} from "@angular/router";
 import {PlayerService} from "../player.service";
-import {FuttiesPlayer} from "../futtiesplayer.model";
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-player-list',
@@ -12,6 +13,7 @@ import {FuttiesPlayer} from "../futtiesplayer.model";
 export class PlayerListComponent implements OnInit {
 
   private players: Player[] = [];
+  private playersChanged = new Observable<Player[]>();
   private playerService: PlayerService;
   private route: ActivatedRoute;
 
@@ -19,17 +21,19 @@ export class PlayerListComponent implements OnInit {
     this.playerService = playerService;
     this.route = route;
 
-    const player1 = new FuttiesPlayer('Sadio Mané', 25, 175, 'Senegal', 'Aanvaller', 1, 1);
-    const player2 = new FuttiesPlayer('Adam Lallana', 29, 172, 'Engeland', 'Middenvelder', 1, 1);
-    this.players[0] = player1;//a
-    this.players[1] = player2;
+    this.playersChanged = new Observable(observer => {
+      playerService.getPlayers().then(() => {
+        observer.complete();
+      });
+    });
   }
 
   ngOnInit() {
-    this.route.data
-      .subscribe((data: Data) => {
-        //this.players = data['players'];
+    this.playerService.getPlayers()
+      .then((players) => {
+        this.players = players;
         console.log(this.players);
-      });
+      })
+      .catch(error => console.log(error));
   }
 }

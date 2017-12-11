@@ -9,36 +9,24 @@ import {FuttiesClub} from './futtiesclub.model';
 export class ClubService {
 
   private clubs: Club[];
-  private headers: Headers;
-  private serverUrl: string;
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private serverUrl = environment.serverUrl + '/clubs';
 
-  constructor(private http: Http) {
-    this.headers = new Headers({'Content-Type': 'application/json'});
-    this.serverUrl = environment.serverUrl + '/clubs';
-  }
+  constructor(private http: Http) { }
 
-  // Het ophalen van bestaande clubs uit de database
-  fetchClubs(): void {
-    this.http.get(this.serverUrl, {headers: this.headers})
+  public getClubs(): Promise<FuttiesClub[]> {
+    return this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
-      .then(clubs => {
-        console.log(clubs.json());
-        this.clubs = clubs.json() as FuttiesClub[];
+      .then(response => {
+        this.clubs = response.json() as FuttiesClub[];
+        return response.json() as FuttiesClub[];
       })
       .catch(error => {
-        console.log(error.message);
+        return FuttiesClub[0];
       });
   }
 
-  public getClubByIndex(index: number): Club {
+  getClub(index: number) {
     return this.clubs[index];
-  }
-
-  public getClubByName(name: string): Club {
-    return this.clubs.find({name: name}[0]);
-  }
-
-  public getClubs(): Club[] {
-    return this.clubs;
   }
 }

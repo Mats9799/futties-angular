@@ -3,18 +3,18 @@
 <div class="player-list">
   <div class="player">
     <div class="player-row">
-      <h3>{{player.getName()}}</h3>
+      <h3>{{player.name}}</h3>
     </div>
     <div class="player-row">
-      <p>{{player.getAge()}} jaar</p>
-      <p style="float: right;">{{player.getPosition()}}</p>
+      <p>{{player.age}} jaar</p>
+      <p style="float: right;">{{player.position}}</p>
     </div>
     <div class="player-row">
-      <img [src]="'../../assets/img/flags/' + player.getCountry().replace(' ', '_').toLowerCase() + '.png'"/>
-      <p>{{player.getCountry()}}</p>
+      <img [src]="'../../assets/img/flags/' + player.country.replace(' ', '_').toLowerCase() + '.png'"/>
+      <p>{{player.country}}</p>
     </div>
     <div class="player-image">
-      <img [src]="'../../assets/img/players/' + player.getName().replace(' ', '_').toLowerCase() + '.png'"/>
+      <img [src]="'../../assets/img/players/' + player.name.replace(' ', '_').toLowerCase() + '.png'"/>
       <button class="btn btn-success" (click)="onSign()">Contracteer</button>
     </div>
   </div>

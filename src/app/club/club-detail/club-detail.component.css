@@ -1,4 +1,4 @@
-.player {
+.club {
   border: 2px solid #CCCCCC;
   border-radius: 20px;
   margin: 5px;
@@ -7,28 +7,28 @@
   width: 250px;
 }
 
-.player-image button {
+.club-image button {
   display: block;
   margin: 5px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.player-image img {
+.club-image img {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.player-list {
+.club-list {
   display: inline-block;
 }
 
-.player-row {
+.club-row {
   display: inline;
 }
 
-.player-row img {
+.club-row img {
   height: 20px;
 }
 

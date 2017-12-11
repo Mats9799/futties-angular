@@ -8,35 +8,29 @@ import {FuttiesPlayer} from './futtiesplayer.model';
 @Injectable()
 export class PlayerService {
 
-  private headers: Headers;
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private serverUrl = environment.serverUrl + '/players';
   private players: Player[];
-  private serverUrl: string;
 
-  constructor(private http: Http) {
-    this.headers = new Headers({'Content-Type': 'application/json'});
-    this.serverUrl = environment.serverUrl + '/players';
-  }
+  constructor(private http: Http) { }
 
-  // Het ophalen van bestaande players uit de database
-  public getPlayers(): Promise<Player[]> {
-    this.http.get(this.serverUrl, {headers: this.headers})
+  public getPlayers(): Promise<FuttiesPlayer[]> {
+    return this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
-      .then(players => {
-        this.players = players.json() as FuttiesPlayer[];
-        console.log(this.players);
-        return players.json() as FuttiesPlayer[];
+      .then(response => {
+        this.players = response.json() as FuttiesPlayer[];
+        return response.json() as FuttiesPlayer[];
       })
       .catch(error => {
-        console.log(error.message);
-        return new Player[0];
+        return FuttiesPlayer[0];
       });
   }
 
-  public getPlayerByIndex(index: number): Player {
+  getPlayer(index: number) {
     return this.players[index];
   }
 
-  public getPlayerByName(name: string): Player {
-    return this.players.find({name: name}[0]);
+  getPlayer(id: string): Player {
+    return this.players.find({_id: id});
   }
 }

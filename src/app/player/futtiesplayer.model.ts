@@ -2,13 +2,13 @@ import {Player} from './player.model';
 
 export class FuttiesPlayer implements Player {
 
-  private age: number;
-  private assists: number;
-  private country: string;
-  private goals: number;
-  private height: number;
-  private name: string;
-  private position: string;
+  public age: number;
+  public assists: number;
+  public country: string;
+  public goals: number;
+  public height: number;
+  public name: string;
+  public position: string;
 
   constructor(name: string, age: number, height: number, country: string, position: string, goals: number, assists: number) {
     this.name = name;
@@ -20,7 +20,7 @@ export class FuttiesPlayer implements Player {
     this.assists = assists;
   }
 
-  public getAge(): number {
+  getAge(): number {
     return this.age;
   }
 

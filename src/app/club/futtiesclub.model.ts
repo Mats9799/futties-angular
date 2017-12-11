@@ -3,10 +3,11 @@ import {Player} from '../player/player.model';
 
 export class FuttiesClub implements Club {
 
-  private city: string;
-  private name: string;
-  private players: Player[];
-  private stadium: string;
+  public _id: string;
+  public city: string;
+  public name: string;
+  public players: Player[];
+  public stadium: string;
 
   constructor(name: string, city: string, stadium: string, ...players: Player[]) {
     this.name = name;

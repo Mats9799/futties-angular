@@ -1,0 +1,10 @@
+<div class="row">
+  <div *ngIf="clubs" class="col-xs-12">
+    <app-club-detail
+      *ngFor="let club of clubs"
+      [club]="club"></app-club-detail>
+  </div>
+  <div *ngIf="!clubs">
+    <p>Nog geen clubs!</p>
+  </div>
+</div>
