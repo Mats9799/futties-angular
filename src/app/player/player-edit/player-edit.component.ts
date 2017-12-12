@@ -10,9 +10,9 @@ import {PlayerService} from "../player.service";
 })
 export class PlayerEditComponent implements OnInit {
 
-  id: string;
-  editMode = false;
-  recipeForm: FormGroup;
+  private editMode = false;
+  private id: string;
+  private playerForm: FormGroup;
 
   constructor(private playerService: PlayerService, private route: ActivatedRoute, private router: Router) { }
 
@@ -28,19 +28,19 @@ export class PlayerEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const player = this.recipeForm.value;
+    const player = this.playerForm.value;
     player._id = this.id;
     console.log(player);
     if (this.editMode) {
-      this.playerService.updatePlayer(this.recipeForm.value);
+      this.playerService.updatePlayer(this.playerForm.value);
     } else {
-      this.playerService.addPlayer(this.recipeForm.value);
+      this.playerService.addPlayer(this.playerForm.value);
     }
     this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../../'], {relativeTo: this.route});
   }
 
   private initForm() {
@@ -59,7 +59,7 @@ export class PlayerEditComponent implements OnInit {
       playerPosition = player.position;
     }
 
-    this.recipeForm = new FormGroup({
+    this.playerForm = new FormGroup({
       'name': new FormControl(playerName, Validators.required),
       'age': new FormControl(playerAge, Validators.required),
       'country': new FormControl(playerCountry, Validators.required),

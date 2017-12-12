@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlayerService} from "../../player/player.service";
 import {Club} from "../club.model";
+import {ClubService} from "../club.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-club-players',
@@ -9,14 +11,21 @@ import {Club} from "../club.model";
 })
 export class ClubPlayersComponent implements OnInit {
 
-  @Input() club: Club;
-
+  private club: Club;
+  private clubService: ClubService;
   private playerService: PlayerService;
 
-  constructor(playerService: PlayerService) {
+  constructor(clubService: ClubService, playerService: PlayerService, private route: ActivatedRoute) {
+    this.clubService = clubService;
     this.playerService = playerService;
   }
 
   ngOnInit() {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.club = this.clubService.getClubById(params['id']);
+        }
+      );
   }
 }

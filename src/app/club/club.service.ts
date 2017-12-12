@@ -14,6 +14,12 @@ export class ClubService {
 
   constructor(private http: Http) { }
 
+  public getClubById(id: string): Club {
+    console.log(id);
+    console.log(this.clubs.find(c => c._id === id));
+    return this.clubs.find(c => c._id === id);
+  }
+
   public getClubs(): Promise<FuttiesClub[]> {
     return this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
@@ -24,9 +30,5 @@ export class ClubService {
       .catch(error => {
         return FuttiesClub[0];
       });
-  }
-
-  getClub(index: number) {
-    return this.clubs[index];
   }
 }
