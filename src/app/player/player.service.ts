@@ -78,7 +78,9 @@ export class PlayerService {
     return this.http.put(this.serverUrl + '/' + player._id, {
       name: player.name,
       age: player.age,
+      assists: player.assists,
       country: player.country,
+      goals: player.goals,
       height: player.height,
       position: player.position,
       headers: this.headers

@@ -24,17 +24,23 @@ export class TeamService {
     return this.team;
   }
 
-  public getTeamFromDb(): Promise<Team> {
+  public getTeamFromDb(): Promise<Team[]> {
     return this.http.get(this.serverUrl, {headers: this.headers})
       .toPromise()
       .then(response => {
-        this.team = response.json() as Team;
-        return response.json() as Team;
+        this.team = (response.json() as Team[])[0];
+        console.log(this.team);
+        return response.json() as Team[];
       })
       .catch(error => {
         return null;
       });
   }
+
+  public hasPlayer(player: Player): boolean {
+    const foundPlayer = this.team.players.find(p => p._id.toString() === player._id.toString());
+    return foundPlayer !== null && foundPlayer !== undefined;
+}
 
   removePlayer(player: Player): void {
     this.team.players.splice(this.team.players.indexOf(player), 1);

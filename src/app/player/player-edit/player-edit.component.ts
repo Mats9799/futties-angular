@@ -46,7 +46,9 @@ export class PlayerEditComponent implements OnInit {
   private initForm() {
     let playerName = '';
     let playerAge = 0;
+    let playerAssists = 0;
     let playerCountry = '';
+    let playerGoals = 0;
     let playerHeight = 0;
     let playerPosition = '';
 
@@ -54,7 +56,9 @@ export class PlayerEditComponent implements OnInit {
       const player = this.playerService.getPlayerById(this.id);
       playerName = player.name;
       playerAge = player.age;
+      playerAssists = player.assists;
       playerCountry = player.country;
+      playerGoals = player.goals;
       playerHeight = player.height;
       playerPosition = player.position;
     }
@@ -62,7 +66,9 @@ export class PlayerEditComponent implements OnInit {
     this.playerForm = new FormGroup({
       'name': new FormControl(playerName, Validators.required),
       'age': new FormControl(playerAge, Validators.required),
+      'assists': new FormControl(playerAssists, Validators.required),
       'country': new FormControl(playerCountry, Validators.required),
+      'goals': new FormControl(playerGoals, Validators.required),
       'height': new FormControl(playerHeight, Validators.required),
       'position': new FormControl(playerPosition, Validators.required)
     });

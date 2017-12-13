@@ -15,7 +15,7 @@
       <img [src]="'../../assets/img/players/' + player.name.replace(' ', '_').toLowerCase() + '.png'"/>
     </div>
     <div class="row player-row">
-      <button class="btn btn-success" (click)="onClaim()">Claim</button>
+      <button [disabled]="teamService.hasPlayer(player) || teamService.getTeam().players.length >= 3" class="btn btn-success" (click)="onClaim()">Claim</button>
       <button class="btn btn-primary" (click)="onEdit()">Bewerk</button>
       <button class="btn btn-danger" (click)="onDelete()">Verwijder</button>
     </div>

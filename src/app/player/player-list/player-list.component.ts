@@ -3,7 +3,6 @@ import {Player} from "../player.model";
 import {ActivatedRoute, Data} from "@angular/router";
 import {PlayerService} from "../player.service";
 import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-player-list',
