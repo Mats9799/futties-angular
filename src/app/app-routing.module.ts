@@ -7,6 +7,7 @@ import {ClubPlayersComponent} from "./club/club-players/club-players.component";
 import {PlayerEditComponent} from "./player/player-edit/player-edit.component";
 import {ClubListComponent} from "./club/club-list/club-list.component";
 import {PlayerListComponent} from "./player/player-list/player-list.component";
+import {TeamPlayersComponent} from "./team/team-players/team-players.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/players', pathMatch: 'full' },
@@ -22,7 +23,11 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: PlayerEditComponent }
     ]
   },
-  { path: 'team', component: TeamComponent }
+  { path: 'team', component: TeamComponent,
+    children: [
+      { path: '', component: TeamPlayersComponent }
+    ]
+  }
 ];
 
 @NgModule({

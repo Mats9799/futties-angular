@@ -1,0 +1,11 @@
+<div class="row">
+  <div *ngIf="team?.getPlayers()" class="col-xs-12">
+    <app-player-detail
+      *ngFor="let player of team.getPlayers()"
+      [player]="player"></app-player-detail>
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="!team?.getPlayers()">
+    <p>Je hebt nog geen spelers in je team.</p>
+  </div>
+</div>

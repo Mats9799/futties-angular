@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 
 import {Player} from '../player.model';
 import {ActivatedRoute, Router} from "@angular/router";
+import {TeamService} from "../../team/team.service";
+import {PlayerService} from "../player.service";
 
 @Component({
   selector: 'app-player-detail',
@@ -12,13 +14,17 @@ export class PlayerDetailComponent {
 
   @Input() player: Player;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private playerService: PlayerService, private teamService: TeamService, private route: ActivatedRoute, private router: Router) { }
 
-  onEdit() {
-    this.router.navigate([this.player._id + '/edit'], {relativeTo: this.route});
+  onClaim(): void {
+    this.teamService.addPlayer(this.player);
   }
 
-  onSign(): void {
+  onDelete(): void {
+    this.playerService.deletePlayer(this.player);
+  }
 
+  onEdit(): void {
+    this.router.navigate([this.player._id + '/edit'], {relativeTo: this.route});
   }
 }

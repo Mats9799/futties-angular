@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrl: 'http://localhost:3000/api/v1'
+  serverUrl: 'http://futties-nodejs.herokuapp.com/api/v1'
 };
