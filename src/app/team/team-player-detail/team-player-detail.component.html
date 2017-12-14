@@ -8,11 +8,11 @@
       <p>{{player.assists}} assists</p>
     </div>
     <div class="player-row">
-      <img [src]="'../../assets/img/flags/' + player.country.replace(' ', '_').toLowerCase() + '.png'"/>
+      <img [src]="'../../assets/img/flags/' + player.country?.split(' ').join('_').toLowerCase() + '.png'"/>
       <p>{{player.country}}</p>
     </div>
     <div class="player-image">
-      <img [src]="'../../assets/img/players/' + player.name.replace(' ', '_').toLowerCase() + '.png'"/>
+      <img [src]="'../../assets/img/players/' + player.name?.split(' ').join('_').toLowerCase() + '.png'"/>
     </div>
     <div class="row player-row">
       <button class="btn btn-danger" (click)="onDelete()">Verwijder</button>

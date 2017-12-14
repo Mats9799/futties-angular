@@ -1,11 +1,10 @@
 <div class="row">
   <div *ngIf="club?.players" class="col-xs-12">
     <app-player-detail
-      *ngFor="let player of club.players"
-      [player]="player"></app-player-detail>
-    <router-outlet></router-outlet>
+      *ngFor="let playerId of club.players"
+      [player]="playerService.getPlayerById(playerId)"></app-player-detail>
   </div>
   <div *ngIf="!club?.players">
-    <p>Nog geen spelers!</p>
+    <p>Deze club heeft geen spelers.</p>
   </div>
 </div>

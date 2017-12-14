@@ -8,14 +8,14 @@
       <p style="float: right;">{{player.position}}</p>
     </div>
     <div class="player-row">
-      <img [src]="'../../assets/img/flags/' + player.country.replace(' ', '_').toLowerCase() + '.png'"/>
+      <img [src]="'../../assets/img/flags/' + player.country?.split(' ').join('_').toLowerCase() + '.png'"/>
       <p>{{player.country}}</p>
     </div>
     <div class="player-image">
-      <img [src]="'../../assets/img/players/' + player.name.replace(' ', '_').toLowerCase() + '.png'"/>
+      <img [src]="'../../assets/img/players/' + player.name?.split(' ').join('_').toLowerCase() + '.png'"/>
     </div>
     <div class="row player-row">
-      <button [disabled]="teamService.hasPlayer(player) || teamService.getTeam().players.length >= 3" class="btn btn-success" (click)="onClaim()">Claim</button>
+      <button [disabled]="teamService.getTeam() === undefined || teamService.hasPlayer(player) || teamService.getTeam().players.length >= 3" class="btn btn-success" (click)="onClaim()">Claim</button>
       <button class="btn btn-primary" (click)="onEdit()">Bewerk</button>
       <button class="btn btn-danger" (click)="onDelete()">Verwijder</button>
     </div>

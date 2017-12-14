@@ -15,8 +15,6 @@ export class ClubService {
   constructor(private http: Http) { }
 
   public getClubById(id: string): Club {
-    console.log(id);
-    console.log(this.clubs.find(c => c._id === id));
     return this.clubs.find(c => c._id === id);
   }
 

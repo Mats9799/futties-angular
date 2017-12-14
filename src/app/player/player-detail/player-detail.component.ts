@@ -18,6 +18,7 @@ export class PlayerDetailComponent {
 
   onClaim(): void {
     this.teamService.addPlayer(this.player);
+    this.router.navigate(['/team'], {relativeTo: this.route});
   }
 
   onDelete(): void {

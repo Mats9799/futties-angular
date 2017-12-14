@@ -17,7 +17,6 @@ export class PlayerService {
   addPlayer(player: Player): Promise<Player> {
     this.players.push(player);
 
-    console.log('Speler toevoegen: ' + player.name);
     return this.http.post(this.serverUrl,
       {
         name: player.name,
@@ -41,7 +40,6 @@ export class PlayerService {
   deletePlayer(player: Player): Promise<Player> {
     this.players.splice(this.players.indexOf(player), 1);
 
-    console.log('Speler verwijderen: ' + player.name);
     return this.http.delete(this.serverUrl + '/' + player._id)
       .toPromise()
       .then(response => {
@@ -74,7 +72,6 @@ export class PlayerService {
   }
 
   updatePlayer(player: Player): Promise<Player> {
-    console.log('Speler updaten: ' + player.name);
     return this.http.put(this.serverUrl + '/' + player._id, {
       name: player.name,
       age: player.age,

@@ -16,7 +16,7 @@ export class TeamService {
     this.getTeamFromDb();
   }
 
-  addPlayer(player: Player): void {
+  public addPlayer(player: Player): void {
     this.team.players.push(player);
   }
 
@@ -29,7 +29,6 @@ export class TeamService {
       .toPromise()
       .then(response => {
         this.team = (response.json() as Team[])[0];
-        console.log(this.team);
         return response.json() as Team[];
       })
       .catch(error => {
@@ -42,7 +41,7 @@ export class TeamService {
     return foundPlayer !== null && foundPlayer !== undefined;
 }
 
-  removePlayer(player: Player): void {
+  public removePlayer(player: Player): void {
     this.team.players.splice(this.team.players.indexOf(player), 1);
   }
 }
